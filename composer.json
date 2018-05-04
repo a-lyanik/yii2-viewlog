@@ -1,0 +1,22 @@
+{
+  "name": "alex-lyanik/yii2-viewlog",
+  "description": "Yii 2 module for viewing the log files",
+  "version": "1",
+  "license": "BSD-2-Clause",
+  "type":    "project",
+  "authors": [
+    {
+      "name": "Alex Lyanik",
+      "email": "alex.lyanik@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "alyanik\\log\\": ""
+    }
+  }
+}
