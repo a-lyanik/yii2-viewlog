@@ -3,19 +3,16 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use \yii\log\Logger;
-use alyanik\models\Log;
+use alyanik\viewlog\models\Log;
 
 /* @var $this yii\web\View */
-/* @var $searchModel alyanik\models\search\LogSearch */
+/* @var $searchModel alyanik\viewlog\models\search\LogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Logs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="log-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Create Log', ['create'], ['class' => 'btn btn-success']) ?>

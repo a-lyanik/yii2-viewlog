@@ -1,11 +1,11 @@
 <?php
 
-namespace alyanik\models\search;
+namespace alyanik\viewlog\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use alyanik\models\Log;
+use alyanik\viewlog\models\Log;
 
 /**
  * LogSearch - main search model.

@@ -1,6 +1,6 @@
 <?php
 
-namespace alyanik\models;
+namespace alyanik\viewlog\models;
 
 use Yii;
 use \yii\db\ActiveRecord;
