@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ~~~
-composer require a-lyanik/yii2-viewlog
+composer require alex-lyanik/yii2-viewlog
 ~~~
 
 or add
 
 ~~~
-"a-lyanik/yii2-viewlog": "*"
+"alex-lyanik/yii2-viewlog": "*"
 ~~~
 
 to the require section of your `composer.json` file.
