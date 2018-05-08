@@ -30,6 +30,6 @@ class Module extends YiiModule
     /**
      * @var string
      */
-    public $defaultRoute = 'viewlog';
+    public $defaultRoute = 'log';
 
 }

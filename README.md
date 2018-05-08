@@ -37,7 +37,7 @@ return [
 ];
 ~~~
 
-The module will now be accessible from `/log` where you can view a table of your logs
+The module will now be accessible from `/viewlog` where you can view a table of your logs
 
 ## Built for
 

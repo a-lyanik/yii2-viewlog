@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use \yii\log\Logger;
 use alyanik\viewlog\models\Log;
+use \yii\helpers\StringHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel alyanik\viewlog\models\search\LogSearch */
@@ -13,11 +14,6 @@ $this->title = 'Logs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="log-index">
-
-    <p>
-        <?= Html::a('Create Log', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel'  => $searchModel,
@@ -34,12 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'prefix',
                 'format'    => 'raw',
                 'value'     => function ($model) {
-                    return \yii\helpers\StringHelper::truncate($model->prefix, 100);
+                    return StringHelper::truncate($model->prefix, 100);
                 },
             ],
             [
                 'attribute' => 'log_time',
-                'format'    => 'datetime',
+                'format'    => ['datetime', 'php:d.m.Y H:i:s'],
                 'value'     => function ($model) {
                     return (int)$model->log_time;
                 }
