@@ -48,6 +48,18 @@ class LogSearch extends Log
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'default' => SORT_DESC
+                ],
+                'attributes' => [
+                    'default' => [
+                        'desc' => [
+                            'id' => SORT_DESC
+                        ]
+                    ]
+                ],
+            ]
         ]);
 
         $this->load($params);
@@ -60,14 +72,14 @@ class LogSearch extends Log
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'level' => $this->level,
-            'log_time' => $this->log_time,
+            'id'        => $this->id,
+            'level'     => $this->level,
+            'log_time'  => $this->log_time,
         ]);
 
         $query->andFilterWhere(['like', 'category', $this->category])
-            ->andFilterWhere(['like', 'prefix', $this->prefix])
-            ->andFilterWhere(['like', 'message', $this->message]);
+              ->andFilterWhere(['like', 'prefix', $this->prefix])
+              ->andFilterWhere(['like', 'message', $this->message]);
 
         return $dataProvider;
     }
