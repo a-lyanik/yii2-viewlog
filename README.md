@@ -43,6 +43,14 @@ The module will now be accessible from `/viewlog` where you can view a table of 
 
 * [Yii2](https://www.yiiframework.com) - The web framework used
 
+## Screens
+
+List:
+![List](https://i.imgur.com/REgxE7E.jpg)
+
+View:
+![View](https://i.imgur.com/mPgme4P.jpg)
+
 ## Acknowledgments
 
 * [PSR-2](https://www.php-fig.org/psr/psr-2/) - PHP code style (plz)
