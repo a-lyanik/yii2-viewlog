@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use \yii\log\Logger;
 use alyanik\viewlog\models\Log;
 use \yii\helpers\StringHelper;
+use kartik\daterange\DateRangePicker;
 
 /* @var $this yii\web\View */
 /* @var $searchModel alyanik\viewlog\models\search\LogSearch */
@@ -14,6 +15,7 @@ $this->title = 'Logs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="log-index">
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel'  => $searchModel,
@@ -38,7 +40,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'    => ['datetime', 'php:d.m.Y H:i:s'],
                 'value'     => function ($model) {
                     return (int)$model->log_time;
-                }
+                },
+                'filter'     => DateRangePicker::widget([
+                    'model'         => $searchModel,
+                    'attribute'     => 'log_time',
+                    'convertFormat' => true,
+                    'startAttribute'=>'datetime_start',
+                    'endAttribute'  =>'datetime_end',
+                    'presetDropdown'=> true,
+                    'pluginOptions' => [
+                        'locale' => [
+                            'format' => 'd.m.Y H:i:s'
+                        ],
+                    ],
+                ])
             ],
             [
                 'class'     => 'yii\grid\ActionColumn',

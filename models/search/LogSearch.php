@@ -2,6 +2,7 @@
 
 namespace alyanik\viewlog\models\search;
 
+use kartik\daterange\DateRangeBehavior;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -12,6 +13,10 @@ use alyanik\viewlog\models\Log;
  */
 class LogSearch extends Log
 {
+    public $datetime_start;
+    public $datetime_end;
+
+
     /**
      * {@inheritdoc}
      */
@@ -19,8 +24,7 @@ class LogSearch extends Log
     {
         return [
             [['id', 'level'], 'integer'],
-            [['category', 'prefix', 'message'], 'safe'],
-            [['log_time'], 'number'],
+            [['category', 'prefix', 'message', 'datetime_start', 'datetime_end', 'datetime_range', 'log_time'], 'safe'],
         ];
     }
 
@@ -65,6 +69,7 @@ class LogSearch extends Log
         $this->load($params);
 
         if (!$this->validate()) {
+
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
@@ -73,13 +78,20 @@ class LogSearch extends Log
         // grid filtering conditions
         $query->andFilterWhere([
             'id'        => $this->id,
-            'level'     => $this->level,
-            'log_time'  => $this->log_time,
+            'level'     => $this->level
         ]);
 
         $query->andFilterWhere(['like', 'category', $this->category])
-              ->andFilterWhere(['like', 'prefix', $this->prefix])
-              ->andFilterWhere(['like', 'message', $this->message]);
+            ->andFilterWhere(['like', 'prefix', $this->prefix])
+            ->andFilterWhere(['like', 'message', $this->message]);
+
+        if ($this->datetime_start) {
+            $query->andFilterWhere(['>=', 'log_time', strtotime($this->datetime_start)]);
+        }
+
+        if ($this->datetime_end) {
+            $query->andFilterWhere(['<', 'log_time', strtotime($this->datetime_end)]);
+        }
 
         return $dataProvider;
     }
